@@ -1,43 +1,594 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Katti Mamatha | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(35, 15, 80, 0.45),
+                    rgba(35, 15, 80, 0.45)
+                ),
+                url("lavender sky.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(25, 10, 55, 0.65);
+            backdrop-filter: blur(12px);
+
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        nav .logo span {
+            color: #e8b7ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e8b7ff;
+        }
+
+
+        /* COMMON SECTION */
+
+        section {
+            min-height: 100vh;
+            padding: 120px 10% 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 45px;
+            color: #f1d7ff;
+        }
+
+
+        /* HOME */
+
+        #home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .home-content {
+            padding: 55px 45px;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+
+            max-width: 850px;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .home-content h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: #e6b3ff;
+        }
+
+        .home-content h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+
+        /* ABOUT */
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 40px;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(12px);
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-box p {
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+
+        /* EDUCATION */
+
+        .education-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .education-card {
+            width: 300px;
+            min-height: 210px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(12px);
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .education-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .education-card h3 {
+            color: #efc7ff;
+            margin-bottom: 15px;
+        }
+
+        .education-card p {
+            line-height: 1.6;
+        }
+
+
+        /* SKILLS */
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 18px 30px;
+
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.08);
+            background: rgba(255,255,255,0.25);
+        }
+
+
+        /* PROJECTS */
+
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            width: 320px;
+
+            padding: 30px;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(12px);
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            color: #efc7ff;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            line-height: 1.7;
+        }
+
+
+        /* CONTACT */
+
+        .contact-box {
+            max-width: 650px;
+            margin: auto;
+
+            padding: 45px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(12px);
+
+            border-radius: 25px;
+        }
+
+        .contact-box p {
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            background: rgba(20, 8, 40, 0.7);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .home-content h1 {
+                font-size: 38px;
+            }
+
+            .home-content {
+                padding: 35px 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
-    <h1>Welcome to My Portfolio 🌟</h1>
+    <!-- NAVIGATION -->
 
-    <h2>Hi! I'm Katti Mamatha 👋</h2>
+    <nav>
 
-    <h3>B.Tech CSE (AI & ML) Student 💻</h3>
+        <div class="logo">
+            Katti <span>Mamatha</span>
+        </div>
 
-    <p>Welcome to my personal website!</p>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
 
-    <hr>
+    </nav>
 
-    <h2>About Me</h2>
 
-    <p>
-        My name is Katti Mamatha. I am from Narasaraopet,
-        Palnadu District. I am currently studying B.Tech
-        in Computer Science and Engineering (AI & ML) at
-        MAM Women's Engineering College, Kesanupalli,
-        Palnadu District.
-    </p>
+    <!-- HOME -->
 
-    <h2>Education</h2>
+    <section id="home">
 
-    <p>
-        🎓 B.Tech CSE (AI & ML)<br>
-        MAM Women's Engineering College, Kesanupalli,
-        Palnadu District.
-    </p>
+        <div class="home-content">
 
-    <p>
-        🎓 Intermediate (MPC)<br>
-        Sri Chaitanya Junior College, Narasaraopet.
-    </p>
+            <h1>
+                Hi, I'm
+                <span>Katti Mamatha</span> 👋
+            </h1>
+
+            <h3>
+                B.Tech CSE (AI & ML) Student 💻
+            </h3>
+
+            <p>
+                Welcome to my personal portfolio!
+                <br>
+                I am passionate about technology,
+                Artificial Intelligence and Machine Learning.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About Me 💜
+        </h2>
+
+        <div class="about-box">
+
+            <p>
+                I am <strong>Katti Mamatha</strong> from
+                Narasaraopet, Palnadu District.
+
+                I am currently studying
+                <strong>B.Tech in Computer Science Engineering
+                (AI & ML)</strong> at
+                <strong>MAM Women's Engineering College,
+                Kesanupalli, Palnadu District.</strong>
+
+                <br><br>
+
+                I am interested in learning new technologies
+                and developing my skills in programming,
+                Artificial Intelligence and Machine Learning.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section id="education">
+
+        <h2 class="section-title">
+            My Education 🎓
+        </h2>
+
+        <div class="education-container">
+
+            <div class="education-card">
+
+                <div class="icon">🎓</div>
+
+                <h3>B.Tech CSE (AI & ML)</h3>
+
+                <p>
+                    MAM Women's Engineering College
+                    <br>
+                    Kesanupalli,
+                    Palnadu District
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <div class="icon">📚</div>
+
+                <h3>Intermediate – MPC</h3>
+
+                <p>
+                    Sri Chaitanya Junior College
+                    <br>
+                    Narasaraopet
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <div class="icon">🏫</div>
+
+                <h3>SSC</h3>
+
+                <p>
+                    Bhashyam School
+                    <br>
+                    Narasaraopet
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My Skills 💻
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill">
+                C Programming
+            </div>
+
+            <div class="skill">
+                Python
+            </div>
+
+            <div class="skill">
+                HTML
+            </div>
+
+            <div class="skill">
+                CSS
+            </div>
+
+            <div class="skill">
+                Artificial Intelligence
+            </div>
+
+            <div class="skill">
+                Machine Learning
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            My Projects 🚀
+        </h2>
+
+        <div class="projects-container">
+
+            <div class="project-card">
+
+                <h3>🌐 Personal Portfolio</h3>
+
+                <p>
+                    A personal portfolio website created
+                    using HTML and CSS to showcase my
+                    education, skills and interests.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>🤖 AI & ML Projects</h3>
+
+                <p>
+                    I am interested in developing
+                    Artificial Intelligence and Machine
+                    Learning projects as I continue
+                    learning.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact Me 📩
+        </h2>
+
+        <div class="contact-box">
+
+            <p>
+                Thank you for visiting my portfolio! 💜
+            </p>
+
+            <p>
+                I am always interested in learning,
+                exploring technology and building
+                new projects.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Katti Mamatha | Portfolio 💜
+        </p>
+
+    </footer>
 
 </body>
 </html>
